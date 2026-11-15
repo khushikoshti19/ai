@@ -1,0 +1,82 @@
+import re
+
+
+def chatbot_response(user_input):
+
+    text = user_input.lower().strip()
+
+    if re.search(r"\b(hi|hello|hey|good morning|good afternoon)\b", text):
+        return "Hello! How can I help you?"
+
+    elif re.search(r"\b(your name|who are you|what are you)\b", text):
+        return "I am a Rule-Based Chatbot created using Python."
+
+    elif re.search(r"\b(how are you|how do you feel)\b", text):
+        return "I am fine. Thank you for asking!"
+
+    elif re.search(r"\b(python|python language)\b", text):
+        return "Python is a high-level, interpreted and easy-to-learn programming language."
+
+    elif re.search(r"\b(java|java language)\b", text):
+        return "Java is a popular object-oriented programming language."
+
+    elif re.search(r"\b(c language|c programming|c\+\+|cpp)\b", text):
+        return "C and C++ are widely used programming languages for system and application development."
+
+    elif re.search(r"\b(dbms|database|sql)\b", text):
+        return "DBMS is software used to create, manage and organize databases."
+
+    elif re.search(r"\b(data structure|stack|queue|linked list|tree|graph)\b", text):
+        return "Data structures are ways of organizing and storing data efficiently."
+
+    elif re.search(r"\b(operating system|os|linux|windows)\b", text):
+        return "An operating system manages computer hardware, software and system resources."
+
+    elif re.search(r"\b(network|computer network|tcp|ip|internet)\b", text):
+        return "A computer network connects devices so that they can communicate and share resources."
+
+    elif re.search(r"\b(ai|artificial intelligence)\b", text):
+        return "Artificial Intelligence enables computers to perform tasks that normally require human intelligence."
+
+    elif re.search(r"\b(machine learning|ml)\b", text):
+        return "Machine Learning allows computers to learn patterns from data."
+
+    elif re.search(r"\b(college|university|campus)\b", text):
+        return "College is an important place for learning, practical work and developing technical skills."
+
+    elif re.search(r"\b(exam|examination|test)\b", text):
+        return "Prepare a study schedule, revise important concepts and practice previous questions."
+
+    elif re.search(r"\b(study|studying|learn|learning)\b", text):
+        return "Regular practice and revision are good ways to improve your technical knowledge."
+
+    elif re.search(r"\b(thanks|thank you|thankyou)\b", text):
+        return "You're welcome!"
+
+    elif re.search(r"\b(help|help me|can you help)\b", text):
+        return "Sure! You can ask me about Python, Java, DBMS, OS, AI, ML or Data Structures."
+
+    elif re.search(r"\b(bye|goodbye|exit|quit)\b", text):
+        return "Goodbye! Have a nice day."
+
+    else:
+        return "Sorry, I don't understand your question."
+
+
+print("=" * 50)
+print("           RULE-BASED CHATBOT")
+print("=" * 50)
+print("Chatbot: Hello! I am a simple chatbot.")
+print("Chatbot: Type 'bye' to end the conversation.")
+print()
+
+while True:
+
+    user_input = input("You: ")
+
+    response = chatbot_response(user_input)
+
+    print("Chatbot:", response)
+
+    if re.search(r"\b(bye|goodbye|exit|quit)\b", user_input.lower()):
+        break
