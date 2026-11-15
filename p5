@@ -1,0 +1,61 @@
+from collections import deque
+
+grid = [
+    ['S', 0, 0, 0],
+    [1, 1, 0, 1],
+    [0, 0, 0, 0],
+    [0, 1, 1, 'G']
+]
+
+start = (0, 0)
+goal = (3, 3)
+
+queue = deque([start])
+
+visited = {start}
+
+parent = {start: None}
+
+directions = [
+    (-1, 0),
+    (1, 0),
+    (0, -1),
+    (0, 1)
+]
+
+while queue:
+    current = queue.popleft()
+
+    if current == goal:
+        break
+
+    for dr, dc in directions:
+        new_row = current[0] + dr
+        new_col = current[1] + dc
+
+        if 0 <= new_row < len(grid) and 0 <= new_col < len(grid[0]):
+            new_position = (new_row, new_col)
+
+            if grid[new_row][new_col] != 1 and new_position not in visited:
+                visited.add(new_position)
+                parent[new_position] = current
+                queue.append(new_position)
+
+path = []
+
+if goal in parent:
+    current = goal
+
+    while current is not None:
+        path.append(current)
+        current = parent[current]
+
+    path.reverse()
+
+    print("Shortest Path:")
+
+    for position in path:
+        print(position)
+
+else:
+    print("No path found")
